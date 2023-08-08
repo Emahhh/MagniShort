@@ -1,0 +1,8 @@
+body {
+    background-color: lightgrey;
+}
+
+.small-monospace-text {
+    font-size: 10px; /* Adjust the size as needed */
+    font-family: monospace;
+}

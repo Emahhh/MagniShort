@@ -49,14 +49,21 @@ $shortener = new ShortenedDB();
 
 <?php
 if ($shortenedCode !== null) {
-    $shortenedURL = $_SERVER['HTTP_HOST'] . '/s=' . $shortenedCode;
+    $currentURL = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $currentURLWithoutQuery = strtok($currentURL, '?'); // Remove query string
+    $shortenedURL = $currentURLWithoutQuery . '?s=' . $shortenedCode;
 ?>
     <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">Here is your new short URL!</h4>
-        <pre><?= $shortenedURL ?></pre>
-        <hr>
         <p class="mb-0">You can now copy this URL and share it with your friends!</p>
+        <div class="input-group mt-3 input-group-lg">
+            <input type="text" class="form-control" id="shortenedURLInput" value="<?= $shortenedURL ?>" readonly>
+            <button class="btn btn-primary" type="button" onclick="copyToClipboard('shortenedURLInput')">
+                Copy <i class="fas fa-copy ml-1"></i>
+            </button>
+        </div>
     </div>
+
 <?php } ?>
 
     <?php if (
