@@ -62,7 +62,7 @@ if ($shortenedCode !== null) {
         <p class="mb-0">You can now copy this URL and share it with your friends!</p>
         <div class="input-group mt-3 input-group-lg">
             <input type="url" class="form-control-lg" id="shortenedURLInput" value="<?= $shortenedURL ?>" readonly>
-            <button class="btn btn-primary" type="button" onclick="copyToClipboard($('#shortenedURLInput').val())">
+            <button class="btn btn-primary" type="button" id="copyShortBtn" onclick="copyAndFeedback('<?= $shortenedURL ?>', 'copyShortBtn')">
                 Copy <i class="fas fa-copy ml-1"></i>
             </button>
         </div>

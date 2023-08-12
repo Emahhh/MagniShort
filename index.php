@@ -94,6 +94,18 @@ The main content is loaded using a REQUIRE o different php file based on the val
                 console.error('Failed to copy: ', err);
             }
         }
+
+        async function copyAndFeedback(txt, btnID){
+            let btn = document.getElementById(btnID);
+            await copyToClipboard(txt);
+
+            let originalText = btn.innerHTML;
+            btn.innerHTML = "Copied!";
+
+            setTimeout(function(){
+                btn.innerHTML = originalText;
+            }, 2000);
+        }
     </script>
 
   </body>

@@ -32,8 +32,8 @@ $expandedURL = $myShortenedDB->getMagnetFromShort($shortCode);
                     <i class="fa fa-download"></i>
                 </a>
 
-                <button class="btn btn-secondary m-3 p-2" type="button"
-                        onclick="copyToClipboard('<?php echo $expandedURL; ?>')">
+                <button class="btn btn-secondary m-3 p-2" type="button" id="copyButtonExpanded"
+                        onclick="copyAndFeedback('<?php echo $expandedURL; ?>', 'copyButtonExpanded')">
                     Copy to clipboard
                     <i class="fa fa-clipboard"></i>
                 </button>
