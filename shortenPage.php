@@ -41,7 +41,10 @@ $shortener = new ShortenedDB();
             <div class="d-flex mb-3 shadow-lg rounded-pill input-group-lg">
                 <label for="magneturl" class="form-label visually-hidden">Magnet URL</label>
                 <input type="url" name="magneturl" id="magneturl" class="form-control rounded-pill-start rounded-end-0" placeholder="Paste your magnet URL here! magnet:?xt=urn:btih:..." aria-label="Magnet URL" aria-describedby="button-addon2" required autocomplete="off">
-                <button type="submit" class="btn btn-primary rounded-start-0 rounded-pill-end ">Shorten my Magnet!</button>
+                <button type="submit" class="btn btn-primary rounded-start-0 rounded-pill-end text-with-shadow">
+                    Shorten!
+                    <i class="fa fa-link"></i>
+                </button>
             </div>
 
         </form>
@@ -58,7 +61,8 @@ if ($shortenedCode !== null) {
         <h4 class="alert-heading">Here is your new short URL!</h4>
         <p class="mb-0">You can now copy this URL and share it with your friends!</p>
         <div class="input-group mt-3 input-group-lg">
-            <button class="btn btn-primary" type="button" onclick="copyToClipboard('shortenedURLInput')">
+            <input type="url" class="form-control-lg" id="shortenedURLInput" value="<?= $shortenedURL ?>" readonly>
+            <button class="btn btn-primary" type="button" onclick="copyToClipboard($('#shortenedURLInput').val())">
                 Copy <i class="fas fa-copy ml-1"></i>
             </button>
         </div>

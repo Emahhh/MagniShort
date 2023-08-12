@@ -2,6 +2,12 @@
 The main content of the page is in the middle of the template.
 The main content is loaded using a REQUIRE o different php file based on the value of $page. -->
 
+<?php
+ require_once __DIR__ . '/config.php';
+ $config = new config();
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,22 +44,24 @@ The main content is loaded using a REQUIRE o different php file based on the val
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top p-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">MagniShort
-        <i class="fa-solid fa-magnet fa-lg"></i>
-    </a>
+    <div class="container-fluid">
+        <a class="navbar-brand text-with-shadow"
+           href="<?= $config->home ?>"
+        >
+            MagniShort
+            <i class="fa-solid fa-magnet fa-lg"></i>
+        </a>
 
 
-    <div  id="navbarsExampleDefault">
-      <ul class="navbar-nav">
-        <li class="nav-item btn-primary">
-            <!-- link to current page, but without ?queries -->
-            <a class="nav-link active btn btn-primary shadow" aria-current="page" href="<?php echo strtok($_SERVER["REQUEST_URI"],'?'); ?>">Shorten a new URL</a>
-        </li>
-      </ul>
+        <!-- link to current page, but without ?queries -->
+        <a class=" btn btn-outline-light shadow p-2" type="button"
+                href="<?= $config->home ?>"
+        >
+            Shorten a new URL
+            <i class="fas fa-plus-circle p-1"></i>
+        </a>
+
     </div>
-  </div>
-
 
 </nav>
 
@@ -78,17 +86,14 @@ The main content is loaded using a REQUIRE o different php file based on the val
 
 
     <script>
-        async function copyToClipboard(elementId){
-            const textElement = document.getElementById(elementId);
-            const text = textElement.innerHTML;
-
+        async function copyToClipboard(txt){
             try {
-                await navigator.clipboard.writeText(text);
+                await navigator.clipboard.writeText(txt);
                 console.log('Content copied to clipboard');
             } catch (err) {
                 console.error('Failed to copy: ', err);
             }
-        };
+        }
     </script>
 
   </body>
