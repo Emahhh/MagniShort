@@ -38,11 +38,12 @@ $shortener = new ShortenedDB();
 
     <?php if ($shortenedCode === null) : ?>
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
-            <div class="input-group mb-3">
-                <label for="magneturl" class="form-label" hidden>Magnet URL</label>
-                <input type="url" name="magneturl" id="magneturl" class="form-control" placeholder="Paste your magnet URL here! magnet:?xt=urn:btih:..." aria-label="Magnet URL" aria-describedby="button-addon2" required>
-                <button type="submit" class="btn btn-primary">Shorten my Magnet!</button>
+            <div class="d-flex mb-3 shadow-lg rounded-pill input-group-lg">
+                <label for="magneturl" class="form-label visually-hidden">Magnet URL</label>
+                <input type="url" name="magneturl" id="magneturl" class="form-control rounded-pill-start rounded-end-0" placeholder="Paste your magnet URL here! magnet:?xt=urn:btih:..." aria-label="Magnet URL" aria-describedby="button-addon2" required autocomplete="off">
+                <button type="submit" class="btn btn-primary rounded-start-0 rounded-pill-end ">Shorten my Magnet!</button>
             </div>
+
         </form>
     <?php endif; ?>
 
@@ -57,7 +58,6 @@ if ($shortenedCode !== null) {
         <h4 class="alert-heading">Here is your new short URL!</h4>
         <p class="mb-0">You can now copy this URL and share it with your friends!</p>
         <div class="input-group mt-3 input-group-lg">
-            <input type="text" class="form-control" id="shortenedURLInput" value="<?= $shortenedURL ?>" readonly>
             <button class="btn btn-primary" type="button" onclick="copyToClipboard('shortenedURLInput')">
                 Copy <i class="fas fa-copy ml-1"></i>
             </button>

@@ -15,7 +15,7 @@ The main content is loaded using a REQUIRE o different php file based on the val
 
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="myStyle.css" rel="stylesheet">
@@ -42,15 +42,13 @@ The main content is loaded using a REQUIRE o different php file based on the val
     <a class="navbar-brand" href="#">MagniShort
         <i class="fa-solid fa-magnet fa-lg"></i>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
+
+    <div  id="navbarsExampleDefault">
+      <ul class="navbar-nav">
+        <li class="nav-item btn-primary">
             <!-- link to current page, but without ?queries -->
-            <a class="nav-link active" aria-current="page" href="<?php echo strtok($_SERVER["REQUEST_URI"],'?'); ?>">Shorten new URL</a>
+            <a class="nav-link active btn btn-primary shadow" aria-current="page" href="<?php echo strtok($_SERVER["REQUEST_URI"],'?'); ?>">Shorten a new URL</a>
         </li>
       </ul>
     </div>
@@ -65,7 +63,7 @@ The main content is loaded using a REQUIRE o different php file based on the val
 
     <?php
         // print all the values in the $_GET array
-        echo "<pre>" . var_export($_GET, true) . "</pre>";
+        // echo "<pre>" . var_export($_GET, true) . "</pre>";
 
         if (isset($_GET['s'])) { // if the user has provided a shortened URL to be expanded, open the expand page
             require __DIR__ . '/expnd.php';
@@ -75,8 +73,10 @@ The main content is loaded using a REQUIRE o different php file based on the val
     ?>
 </main><!-- /.container -->
 
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
     <script>
         async function copyToClipboard(elementId){
             const textElement = document.getElementById(elementId);
